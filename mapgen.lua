@@ -12,10 +12,18 @@ function mapgen.pointOnSide(a, b, c)
 end
 
 
+--[[
+Bounding function to squish height between 0 and 1
+]]
 function mapgen.bounding(x)
 	return 1 / (1 + math.exp(-x))
 end
 
+
+--[[
+Generate map, more iterations means less tesselation
+dh is change in height to be applied at each iteration
+]]
 function mapgen.createMap(iterations, dh, seed)
 	love.math.setRandomSeed(seed)
 	map = {}
@@ -53,6 +61,9 @@ function mapgen.distance(x1, y1, x2, y2)
 end
 
 
+--[[
+Draws map based on heightmap
+]]
 function mapgen.drawMap(map, tileSize)
 	for x = 0, #map do
 		for y = 0, #map[x] do
