@@ -3,15 +3,22 @@ main.lua
 ]]
 
 
+
 local mapgen = require "mapgen"
+local renderer = require "renderer"
+
 
 function love.load()
-	tileSize = 2
-	map = mapgen.createMap(3000, 0.05, love.timer.getTime())
+	tileSize = 1
+	map = mapgen:createMap(3000, 0.03, love.timer.getTime())
 end
 
 
+function drawElevation(map)
+
+end
+
 
 function love.draw()
-	mapgen.drawMap(map, tileSize)
+	renderer:drawMap(map, tileSize, 0.5)
 end
